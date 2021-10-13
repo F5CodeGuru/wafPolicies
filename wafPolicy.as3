@@ -1,0 +1,37 @@
+{
+  "class": "ADC",
+  "schemaVersion": "3.2.0",
+  "id": "5489432",
+  "label": "ASM_policy_external_URL",
+  "remark": "ASM_policy_external_URL",
+
+  "Sample_app_sec": {
+    "class": "Tenant",
+     
+ "HTTP_Service": {
+      "class": "Application",
+      "service": {
+        "class": "Service_HTTP",
+        "virtualAddresses": [
+          "192.0.10.108"
+        ],
+        "snat": "auto",
+	"policyWAF": {
+          "use": "My_ASM_Policy"
+        }
+        
+      },
+
+   
+      "My_ASM_Policy": {
+        "class": "WAF_Policy",
+        "url": "https://raw.githubusercontent.com/below-average-f5-admin/wafPolicies/main/Common_test1_wafPolicy__2021-10-6_11-3-1__bigip-10-3-111-10.liquid.local.xml",
+        "ignoreChanges": true
+      }
+
+
+
+
+    }
+  }
+}
